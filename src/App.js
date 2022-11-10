@@ -1,18 +1,41 @@
-function App() {
+import React, { useState } from "react"
+
+export default function App() {
+	let [objects, setObjects] = useState([
+		{ name: "guy", age: 7, tall: true },
+		{ name: "girl", age: 12, tall: false },
+	])
+	let newObj = {
+		name: "girl",
+		age: 12,
+		tall: false,
+	}
+
 	return (
-		<div className="App">
-			<header className="App-header">
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React f
-				</a>
-			</header>
-		</div>
+		<>
+			{objects[0].name}
+			<pre>{JSON.stringify(objects, null, 2)}</pre>
+			<button
+				onClick={(e) => {
+					setObjects([...objects, { name: "steve", age: 10, tall: true }])
+				}}
+			>
+				change name
+			</button>
+			<button
+				onClick={(e) => {
+					setObjects([...objects, newObj])
+				}}
+			>
+				add obj
+			</button>
+		</>
 	)
 }
 
-export default App
+// function App() {
+// 	let [Todo, setTodo] = (0, React.useState)([""])
+// 	return React.default.createElement(SingleTodo, {
+// 		Todo: Todo,
+// 	})
+// }
